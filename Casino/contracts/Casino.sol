@@ -1,4 +1,4 @@
-pragma solidity 0.4.20;
+pragma solidity ^0.8.9;
 
 
 contract Casino {
@@ -17,9 +17,9 @@ contract Casino {
     
     mapping(address => Player) public playerInfo;
     //fallback function incase someone sends ether to the contract so it doesn't get lost
-    function() public payable {}
+    fallback() public payable { }
     
-    function Casino(uint256 _minimumBet) {
+    constructor (uint256 _minimumBet) {
         owner = msg.sender;
         if (_minimumBet != 0) minimumBet = _minimumBet;
     }
@@ -28,7 +28,7 @@ contract Casino {
         if (msg.sender == owner) selfdestruct(owner);
     }
     
-    function checkPlayerExists(address player) public constant returns(bool) {
+    function checkPlayerExists(address player) public returns(bool) {
         for (uint256 i = 0; i < players.length; i++) {
             if (players[i] == player) return true;
         }
@@ -56,7 +56,7 @@ contract Casino {
     }
 
        // Sends the corresponding ether to each winner depending on the total bets
-    function distributePrizes(uint256 numberWinner) public {
+    function distributePrizes(uint256 numberWinner) public payable{
         address[100] memory winners; // We have to create a temporary in memory array with fixed size
         uint256 count = 0; // This is the count for the array of winners
         for (uint256 i = 0; i < players.length; i++) {
