@@ -16,7 +16,7 @@ contract Casino {
     // The address of the player and => the user info   
     
     mapping(address => Player) public playerInfo;
-    
+    //fallback function incase someone sends ether to the contract so it doesn't get lost
     function() public payable {}
     
     function Casino(uint256 _minimumBet) {
