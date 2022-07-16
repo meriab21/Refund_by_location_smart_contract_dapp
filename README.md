@@ -12,6 +12,7 @@
 
 > The purpose of this week’s challenge is to build an Ethereum based dapp that will allow users to send GPS location to a smart contract at a certain interval. And based on the pre-agreed contract codified in an Ethereum smart contract, a cryptocurrency payment is executed when all the agreed conditions are met. If, at any point, the GPS sensor indicates that an employee is outside the range of the agreed GPS area, the contract state will be updated to indicate that it is out of compliance. Also front end that will allow monitoring of the status.
 
+## Install
 
 ```
 git clone https://github.com/meriab21/Refund_by_location_smart_contract_dapp.git
